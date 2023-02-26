@@ -1,10 +1,17 @@
 /** @format */
 
-import express from 'express';
-import product from './api/product';
-import dotenv from 'dotenv';
+import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
-import filterRouter from './api/routes/filterRouter';
+import dotenv from 'dotenv';
+import fileUpload from 'express-fileupload';
+
+import authRouter from './api/routers/authRouter';
+import orderFormRouter from './api/routers/orderFormRouter';
+import productPageRouter from './api/routers/productPageRouter';
+import filterRouter from './api/routers/filterRouter';
+import collectionRouter from './api/routers/collectionRouter';
+import roleRouter from './api/routers/roleRouter';
+import userRouter from './api/routers/userRouter';
 try {
 	dotenv.config();
 
@@ -20,11 +27,16 @@ try {
 
 	const app = express();
 	app.use(express.json());
-    app.use('/api/product', product);
-    app.use('/api', filterRouter);
-	app.get('/', async (req, res) => {
-		res.status(200).send('H1!');
-	});
+app.use(express.static('public'));
+app.use(fileUpload({}));
+    app.use('/api', productPageRouter);
+	app.use('/api', roleRouter);
+	app.use('/api', userRouter);
+	app.use('/api', collectionRouter);
+	app.use('/api', filterRouter);
+	app.use('/api', orderFormRouter);
+	app.use('/api/auth', authRouter);
+
 	const PORT = process.env.PORT || 8080;
 	const serverStart = async () => {
 		mongoose.set('strictQuery', false);
