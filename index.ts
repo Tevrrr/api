@@ -18,7 +18,10 @@ try {
 	const app = express();
 	app.use(express.json());
 	app.use('/api/product', product);
+app.get('/', async (req, res) => {
 
+	res.status(200).send('H1!');
+});
 	const PORT = process.env.PORT || 8080;
 	const serverStart = async () => {
 		try {
