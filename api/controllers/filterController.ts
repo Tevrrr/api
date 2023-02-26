@@ -6,11 +6,11 @@ import filterService from '../services/filterService';
 class filterController {
 	async getFilters(req: Request, res: Response) {
 		try {
-            const { filters, errorMessage } = await filterService.getFilters();
-            if (errorMessage) {
-				return res.status(400).json({ message: errorMessage });
-			}
-			res.status(200).json( filters );
+            // const { filters, errorMessage } = await filterService.getFilters();
+            // if (errorMessage) {
+			// 	return res.status(400).json({ message: errorMessage });
+			// }
+			res.status(200).json({ filters: 'filters' });
 		} catch (error) {
 			console.log(error);
 			res.status(400).send('get filters error');
