@@ -4,7 +4,9 @@
 	"description": "Deploy express js to vercel.",
 	"main": "index.ts",
 	"scripts": {
-		"start": "nodemon index.ts"
+		"dev": "nodemon index.ts",
+		"build": "tsc --project tsconfig.json",
+		"start": "node dist/index.js"
 	},
 	"repository": {
 		"type": "git",
