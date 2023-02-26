@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"esModuleInterop": true,
+		"module": "commonjs",
+		"outDir": "dist",
+		"lib": ["es2021", "es5", "dom", "dom.iterable", "esnext"],
+		"target": "ES2021",
+		"isolatedModules": false,
+		"noEmit": false
+	},
+	"ts-node": {
+		"esm": true
+	},
+	"include": ["index.ts"],
+	"exclude": ["node_modules"]
+}
