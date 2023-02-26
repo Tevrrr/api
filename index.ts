@@ -5,18 +5,17 @@ import product from './api/product';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 try {
-	// dotenv.config();
+	dotenv.config();
 
 	// if (!process.env.SECRET_KEY) {
 	// 	throw new Error('Missing environment variable: "SECRET_KEY"');
 	// }
 
-	// if (!process.env.MONGODB_URI) {
-	// 	throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
-	// }
+	if (!process.env.MONGODB_URI) {
+		throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
+	}
 
-	const DB_URL =
-		'mongodb+srv://Admin:192837465Vlad@cluster0.dkzm4vk.mongodb.net/?retryWrites=true&w=majority';
+	const DB_URL = process.env.MONGODB_URI;
 
 	const app = express();
 	app.use(express.json());
