@@ -1,8 +1,9 @@
-const express = require("express");
-const app = express();
-const product = require("./api/product");
+import express from "express";
+import product from './api/product'
 
-app.use(express.json({ extended: false }));
+const app = express();
+
+app.use(express.json());
 
 app.use("/api/product", product);
 
