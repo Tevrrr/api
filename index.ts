@@ -26,8 +26,8 @@ try {
 	});
 	const PORT = process.env.PORT || 8080;
 
-	// mongoose.set('strictQuery', false);
-	// mongoose.connect(DB_URL);
+	mongoose.set('strictQuery', false);
+	mongoose.connect(DB_URL);
 	app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
 } catch (error) {
 	console.log(error);
