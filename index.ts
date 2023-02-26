@@ -4,6 +4,7 @@ import express from 'express';
 import product from './api/product';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import filterRouter from './api/routes/filterRouter';
 try {
 	dotenv.config();
 
@@ -19,7 +20,8 @@ try {
 
 	const app = express();
 	app.use(express.json());
-	app.use('/api/product', product);
+    app.use('/api/product', product);
+    app.use('/api', filterRouter);
 	app.get('/', async (req, res) => {
 		res.status(200).send('H1!');
 	});
