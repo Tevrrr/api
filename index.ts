@@ -24,10 +24,14 @@ try {
 		res.status(200).send('H1!');
 	});
 	const PORT = process.env.PORT || 8080;
-
-	mongoose.set('strictQuery', false);
-	mongoose.connect(DB_URL);
-	app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
+	const serverStart = async () => {
+		mongoose.set('strictQuery', false);
+		await mongoose.connect(DB_URL);
+		app.listen(PORT, () =>
+			console.log(`Server is running in port ${PORT}`)
+		);
+    };
+    serverStart();
 } catch (error) {
 	console.log(error);
 }
